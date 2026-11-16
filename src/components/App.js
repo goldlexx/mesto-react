@@ -21,6 +21,11 @@ const App = () => {
     name: '',
     link: '',
   });
+  const [apiError, setApiError] = useState('');
+
+  const showApiError = (error) => {
+    setApiError(error?.message || 'The Mesto API request failed.');
+  };
 
   const setStateCards = (id, newCard) => {
     setCards((state) => state.map((c) => (c._id === id ? newCard : c)));
@@ -55,13 +60,13 @@ const App = () => {
       .then((res) => {
         setCards(res);
       })
-      .catch((err) => console.error(err));
+      .catch(showApiError);
     api
       .getUserInfo()
       .then((res) => {
         setCurrentUser(res);
       })
-      .catch((err) => console.error(err));
+      .catch(showApiError);
   }, []);
 
   const handleCardDelete = (card) => {
@@ -70,7 +75,7 @@ const App = () => {
       .then(() => {
         setCards((state) => state.filter((item) => item._id !== card._id));
       })
-      .catch((err) => console.log(err));
+      .catch(showApiError);
   };
 
   const handleCardLike = (card) => {
@@ -82,14 +87,14 @@ const App = () => {
         .then((newCard) => {
           setStateCards(card._id, newCard);
         })
-        .catch((err) => console.log(err));
+        .catch(showApiError);
     } else {
       api
         .addLikeCard(card._id, !isLiked)
         .then((newCard) => {
           setStateCards(card._id, newCard);
         })
-        .catch((err) => console.log(err));
+        .catch(showApiError);
     }
   };
 
@@ -100,7 +105,7 @@ const App = () => {
         setCurrentUser(res);
         closeAllPopups();
       })
-      .catch((err) => console.log(err));
+      .catch(showApiError);
   };
 
   const handleUpdateAvatar = (card) => {
@@ -110,7 +115,7 @@ const App = () => {
         setCurrentUser(res);
         closeAllPopups();
       })
-      .catch((err) => console.log(err));
+      .catch(showApiError);
   };
 
   const handleUpdateCards = (data) => {
@@ -120,11 +125,16 @@ const App = () => {
         setCards([newCard, ...cards]);
         closeAllPopups();
       })
-      .catch((err) => console.log(err));
+      .catch(showApiError);
   };
 
   return (
     <div className='page__content'>
+      {apiError ? (
+        <p className='api-error' role='alert'>
+          {apiError} Check the API configuration and try again.
+        </p>
+      ) : null}
       <CurrentUserContext.Provider value={currentUser}>
         <Header />
 

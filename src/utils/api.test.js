@@ -15,7 +15,7 @@ afterEach(() => {
 });
 
 test('sends a profile update with JSON data and the authorization header', async () => {
-  const response = { ok: true, json: jest.fn().mockResolvedValue({ name: 'Alex' }) };
+  const response = { ok: true, status: 200, text: jest.fn().mockResolvedValue('{"name":"Alex"}') };
   global.fetch = jest.fn().mockResolvedValue(response);
 
   await expect(createApi().setUserInfo({ name: 'Alex', about: 'Developer' })).resolves.toEqual({ name: 'Alex' });
@@ -28,7 +28,11 @@ test('sends a profile update with JSON data and the authorization header', async
 });
 
 test('rejects unsuccessful API responses', async () => {
-  global.fetch = jest.fn().mockResolvedValue({ ok: false, status: 401 });
+  global.fetch = jest.fn().mockResolvedValue({
+    ok: false,
+    status: 401,
+    text: jest.fn().mockResolvedValue('{"message":"Unauthorized"}'),
+  });
 
-  await expect(createApi().getUserInfo()).rejects.toBe('Ошибка: 401');
+  await expect(createApi().getUserInfo()).rejects.toThrow('Unauthorized');
 });

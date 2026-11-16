@@ -46,3 +46,11 @@
 @import url(./blocks/popup/__caption/popup__caption.css);
 @import url(./blocks/popup/__close-container/popup__close-container.css);
 @import url(./blocks/popup/__form-link/popup__form-link.css);
+/* Keep API failures visible without interrupting the rest of the interface. */
+.api-error {
+  margin: 0;
+  padding: 12px 16px;
+  color: #721c24;
+  background: #f8d7da;
+  text-align: center;
+}
