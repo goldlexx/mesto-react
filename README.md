@@ -1,26 +1,51 @@
-# Mesto — React app
+# Mesto — React Client
 
-Mesto is a photo-sharing interface built with React. It loads profile and card data from the Yandex Practicum Mesto API.
+A React photo-sharing interface for account access, profile updates, and photo-card interactions.
 
-## Run locally
+## Live Demo
 
-```sh
+[Open Mesto](https://goldlexx.github.io/mesto-react/)
+
+## Features
+
+- Registration and sign-in
+- Profile and avatar editing
+- Browse cards, add photos, and manage likes
+- Delete cards owned by the signed-in user
+
+The app requires a compatible Mesto API for account and card data; it does not simulate persistence.
+
+## Tech Stack
+
+- React 18 and React Router
+- Create React App (`react-scripts`)
+- JavaScript and CSS
+
+## Getting Started
+
+```bash
 git clone https://github.com/goldlexx/mesto-react.git
 cd mesto-react
 npm ci
-npm start
 ```
 
-## Configuration
+Create `.env.local` with the API base URL. The compatible Mesto Worker is:
 
-Copy `.env.example` to `.env.local` and configure `REACT_APP_API_BASE_URL` to a compatible API or trusted proxy. This browser client does not accept or embed an API token. The original cohort API may require authorization; connect it through a backend proxy that stores credentials server-side. Do not put tokens in `REACT_APP_*` variables because they are public in the generated bundle.
+```text
+REACT_APP_API_BASE_URL=https://mesto-api.rustik-yuldashev.workers.dev
+```
 
-## Build and test
+Run the development server with `npm start`.
+
+Do not put API credentials in `REACT_APP_*` variables because they are exposed in browser builds. Use a trusted server-side proxy for any API that requires a private credential.
+
+## Build and Test
 
 ```bash
 npm test -- --watchAll=false
 npm run build
 ```
 
+## Project Background
 
-
+The original client was created as a learning project during the Yandex Practicum web development course.
