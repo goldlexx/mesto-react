@@ -1,5 +1,5 @@
 import checkResponse from './checkResponse';
-import { API_BASE_URL, API_TOKEN } from './config';
+import { API_BASE_URL } from './config';
 
 export class Api {
   constructor({ url, headers }) {
@@ -96,7 +96,6 @@ export class Api {
 const api = new Api({
   url: `${API_BASE_URL.replace(/\/+$/, '')}/`,
   headers: {
-    ...(API_TOKEN ? { authorization: API_TOKEN } : {}),
     'Content-Type': 'application/json',
   },
 });

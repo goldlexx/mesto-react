@@ -13,7 +13,7 @@ npm start
 
 ## Configuration
 
-Copy `.env.example` to `.env.local` and configure `REACT_APP_API_BASE_URL` and `REACT_APP_API_TOKEN` for a compatible cohort API. Values prefixed with `REACT_APP_` are embedded in the public browser bundle; never put private credentials there. The API token must be treated as public and rotated with its provider if it is no longer valid.
+Copy `.env.example` to `.env.local` and configure `REACT_APP_API_BASE_URL` to a compatible API or trusted proxy. This browser client does not accept or embed an API token. The original cohort API may require authorization; connect it through a backend proxy that stores credentials server-side. Do not put tokens in `REACT_APP_*` variables because they are public in the generated bundle.
 
 ## Build and test
 
