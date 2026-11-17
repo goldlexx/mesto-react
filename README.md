@@ -1,51 +1,36 @@
-# Mesto — React Client
+<div align="center">
 
-A React photo-sharing interface for account access, profile updates, and photo-card interactions.
+# 📷 Mesto React
 
-## Live Demo
+React-интерфейс для профиля и карточек фотографий.
 
-[Open Mesto](https://goldlexx.github.io/mesto-react/)
+[![React](https://img.shields.io/badge/React-18-61dafb?logo=react&logoColor=111)](https://react.dev/) [![Demo](https://img.shields.io/badge/demo-GitHub%20Pages-222?logo=github)](https://goldlexx.github.io/mesto-react/)
 
-## Features
+</div>
 
-- Registration and sign-in
-- Profile and avatar editing
-- Browse cards, add photos, and manage likes
-- Delete cards owned by the signed-in user
+## Возможности
 
-The app requires a compatible Mesto API for account and card data; it does not simulate persistence.
+- регистрация и вход;
+- редактирование профиля и аватара;
+- создание карточек, удаление и лайки.
 
-## Tech Stack
+## Демонстрация
 
-- React 18 and React Router
-- Create React App (`react-scripts`)
-- JavaScript and CSS
+[Открыть Mesto](https://goldlexx.github.io/mesto-react/)
 
-## Getting Started
+## Запуск
 
 ```bash
-git clone https://github.com/goldlexx/mesto-react.git
-cd mesto-react
 npm ci
+npm start
 ```
 
-Create `.env.local` with the API base URL. The compatible Mesto Worker is:
+Адрес API задаётся через конфигурацию проекта.
 
-```text
-REACT_APP_API_BASE_URL=https://mesto-api.rustik-yuldashev.workers.dev
-```
+## Технологии
 
-Run the development server with `npm start`.
+React, JavaScript, CSS, REST API.
 
-Do not put API credentials in `REACT_APP_*` variables because they are exposed in browser builds. Use a trusted server-side proxy for any API that requires a private credential.
+## Лицензия
 
-## Build and Test
-
-```bash
-npm test -- --watchAll=false
-npm run build
-```
-
-## Project Background
-
-The original client was created as a learning project during the Yandex Practicum web development course.
+Лицензия в репозитории не указана.
